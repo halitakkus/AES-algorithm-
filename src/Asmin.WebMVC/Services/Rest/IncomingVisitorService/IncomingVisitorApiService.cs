@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using Asmin.Core.Utilities.Result;
-using Asmin.Entities.Concrete;
-using Asmin.WebMVC.Services.Rest.Base;
+﻿using AES.WebMVC.Services.Rest.Base;
+using Application.Core.Utilities.Result;
+using Application.Entities.Concrete;
+using System.Threading.Tasks;
 
 namespace Asmin.WebMVC.Services.Rest.IncomingVisitorService
 {

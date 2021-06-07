@@ -1,11 +1,10 @@
-﻿using Asmin.Core.Configuration.Context;
-using Asmin.Core.Configuration.Environment;
-using Asmin.Core.Extensions;
-using Asmin.WebMVC.Extensions;
-using Asmin.WebMVC.Services.Rest.Base;
+﻿using AES.WebMVC.Services.Rest.Base;
+using app.WebMVC.Services.Rest.Base;
+using Application.Core.Configuration.Context;
+using Application.Core.Configuration.Environment;
+using Application.Core.Extensions;
 using Asmin.WebMVC.Services.Rest.IncomingVisitorService;
 using Asmin.WebMVC.Services.Rest.UserService;
-using Asmin.WebMVC.Services.Session;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,11 +18,11 @@ namespace Asmin.WebMVC
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            AsminConfigurationContext = new AsminConfigurationContext(new EnvironmentService());
+            ApplicationConfigurationContext = new ApplicationConfigurationContext(new EnvironmentService());
         }
 
         public IConfiguration Configuration { get; }
-        public IAsminConfigurationContext AsminConfigurationContext { get; }
+        public IApplicationConfigurationContext ApplicationConfigurationContext { get; }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -37,7 +36,6 @@ namespace Asmin.WebMVC
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
-            services.AddSingleton<ISessionService, SessionService>();
             services.AddTransient<IHttpService, HttpService>();
 
             services.AddSingleton<IUserApiService, UserApiService>();
@@ -65,11 +63,7 @@ namespace Asmin.WebMVC
 
             app.UseRouting();
 
-            // Use incoming visitor counter. 🎉
-            app.UseWhen(context => context.Request.Path.StartsWithSegments("/admin") == false, appBuilder =>
-            {
-                appBuilder.UseIncomingVisitorCounter();
-            });
+           
 
             // Use exception middleware. 🎉
             app.UseMVCExceptionMiddleware("/Home/Error");

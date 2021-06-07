@@ -35,6 +35,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application.Packages.Socket
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applicaion.Packages.Hashing", "Applicaion.Packages.Hashing", "{A1C4D972-B58E-410F-895B-E6895A5D6337}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Presentation", "4-Presentation", "{0CF6805C-AF40-4920-9027-122602225704}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AES.WebMVC", "Asmin.WebMVC\AES.WebMVC.csproj", "{4B9D0D82-A029-4C72-895B-9F2B18368B77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +89,10 @@ Global
 		{60800605-A50D-42A4-B56F-DEC4E0F326DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60800605-A50D-42A4-B56F-DEC4E0F326DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60800605-A50D-42A4-B56F-DEC4E0F326DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B9D0D82-A029-4C72-895B-9F2B18368B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B9D0D82-A029-4C72-895B-9F2B18368B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B9D0D82-A029-4C72-895B-9F2B18368B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9D0D82-A029-4C72-895B-9F2B18368B77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +111,7 @@ Global
 		{60800605-A50D-42A4-B56F-DEC4E0F326DB} = {452B432C-D4CA-43DD-B56F-80F6E26E5E79}
 		{452B432C-D4CA-43DD-B56F-80F6E26E5E79} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
 		{A1C4D972-B58E-410F-895B-E6895A5D6337} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
+		{4B9D0D82-A029-4C72-895B-9F2B18368B77} = {0CF6805C-AF40-4920-9027-122602225704}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B8973CD-3F42-4F38-BDE7-5CC5F12C8B22}
