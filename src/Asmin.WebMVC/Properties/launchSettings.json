@@ -1,0 +1,40 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Asmin.WebMVC",
+      "sslPort": 0
+    },
+    "iisExpress": {
+      "applicationUrl": "http://localhost:59283",
+      "sslPort": 44345
+    }
+  },
+  "profiles": {
+    "Development": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASMIN_ENVIRONMENT": "development"
+      }
+    },
+    "Staging": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASMIN_ENVIRONMENT": "staging"
+      }
+    },
+    "Test": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASMIN_ENVIRONMENT": "test"
+      }
+    },
+    "Production": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASMIN_ENVIRONMENT": "production"
+      }
+    }
+  }
+}
