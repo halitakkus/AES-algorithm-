@@ -1,11 +1,4 @@
-﻿@using Asmin.WebMVC.Services.Session
-@using Asmin.WebMVC.Constants
-@using Asmin.Core.Entities.Concrete
-
-@inject ISessionService sessionService
-@{
-    User CurrentUser = sessionService.Get<User>(SessionKey.CurrentUser);
-}
+﻿@using Application.Core.Entities.Concrete
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -13,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Asmin - Dashboard</title>
+    <title>AES - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico">
     <link rel="stylesheet" href="/assets/admin/css/bootstrap.min.css">
@@ -50,7 +43,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a asp-action="Index"><img src="~/assets/site/img/asmin/asmi-logo-transparent.png" alt="logo"></a>
+                   
                 </div>
             </div>
             <div class="main-menu">
@@ -249,7 +242,7 @@
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="~/assets/admin/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">
-                                @CurrentUser.FirstName @CurrentUser.LastName
+                            HOŞGELDİNİZ
                                 <i class="fa fa-angle-down"></i>
                             </h4>
                             <div class="dropdown-menu">
