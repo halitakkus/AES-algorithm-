@@ -17,6 +17,7 @@ namespace Application.Packages.Socket.Core.Service
         /// <param name="plainSocket">Plain byte for socked.</param>
         /// <returns></returns>
         Task<int> Send(byte[] data, IPEndPoint iPEndPoint);
+
         /// <summary>
         /// Receive data with udp or tcp.
         /// </summary>
