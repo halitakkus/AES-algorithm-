@@ -39,9 +39,10 @@ namespace Asmin.WebMVC
             services.AddTransient<IHttpService, HttpService>();
 
             services.AddSingleton<IUserApiService, UserApiService>();
-            services.AddSingleton<IIncomingVisitorApiService, IncomingVisitorApiService>();
 
             services.AddHttpClient();
+
+            
 
             // Register core module. 🎉
             services.AddCoreModule();
