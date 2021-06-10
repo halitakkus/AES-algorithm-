@@ -13,6 +13,7 @@
     <ProjectReference Include="..\Application.Business\Application.Business.csproj" />
     <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
     <ProjectReference Include="..\Application.Packages.AOP\Application.Packages.AOP.csproj" />
+    <ProjectReference Include="..\Application.Packages.Hashing.AES\Application.Packages.Hashing.AES.csproj" />
     <ProjectReference Include="..\Application.Packages.Hashing.Core\Application.Packages.Hashing.Core.csproj" />
     <ProjectReference Include="..\Application.Packages.Hashing.MD5\Application.Packages.Hashing.MD5.csproj" />
     <ProjectReference Include="..\Application.Packages.Hashing.SHA256\Application.Packages.Hashing.SHA256.csproj" />

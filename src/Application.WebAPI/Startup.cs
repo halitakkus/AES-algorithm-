@@ -3,6 +3,7 @@ using Application.Core.Configuration.Context;
 using Application.Core.Configuration.Environment;
 using Application.Core.Extensions;
 using Application.Packages.AOP.InterceptModule;
+using Application.Packages.Hashing.AES.Extensions;
 using Application.Packages.Hashing.MD5.Extensions;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
@@ -59,6 +60,9 @@ namespace Application.WebAPI
 
             // Register business module. 🎉
             services.AddBusinessModule();
+
+            // Register AES module. 🎉
+            services.AddAES();
 
             // Register MD5 module. 🎉
             services.AddMD5();

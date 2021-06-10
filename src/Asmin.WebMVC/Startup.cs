@@ -42,6 +42,8 @@ namespace Asmin.WebMVC
 
             services.AddHttpClient();
 
+            
+
             // Register core module. 🎉
             services.AddCoreModule();
         }

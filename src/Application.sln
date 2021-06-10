@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Presentation", "4-Present
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AES.WebMVC", "Asmin.WebMVC\AES.WebMVC.csproj", "{4B9D0D82-A029-4C72-895B-9F2B18368B77}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Packages.Hashing.AES", "Application.Packages.Hashing.AES\Application.Packages.Hashing.AES.csproj", "{762DA234-6C3B-46E0-B36E-EE5CEF149524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{4B9D0D82-A029-4C72-895B-9F2B18368B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B9D0D82-A029-4C72-895B-9F2B18368B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B9D0D82-A029-4C72-895B-9F2B18368B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762DA234-6C3B-46E0-B36E-EE5CEF149524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762DA234-6C3B-46E0-B36E-EE5CEF149524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762DA234-6C3B-46E0-B36E-EE5CEF149524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762DA234-6C3B-46E0-B36E-EE5CEF149524}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +101,7 @@ Global
 		{3B03DB25-6EA8-4CCB-8CE2-6AB443145281} = {A1C4D972-B58E-410F-895B-E6895A5D6337}
 		{A1C4D972-B58E-410F-895B-E6895A5D6337} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
 		{4B9D0D82-A029-4C72-895B-9F2B18368B77} = {0CF6805C-AF40-4920-9027-122602225704}
+		{762DA234-6C3B-46E0-B36E-EE5CEF149524} = {A1C4D972-B58E-410F-895B-E6895A5D6337}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B8973CD-3F42-4F38-BDE7-5CC5F12C8B22}
