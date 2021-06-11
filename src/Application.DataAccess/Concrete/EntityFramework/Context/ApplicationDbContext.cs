@@ -1,5 +1,4 @@
 ﻿using Application.Core.Entities.Concrete;
-using Application.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,12 +20,11 @@ namespace Application.DataAccess.Concrete.EntityFramework.Context
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<OperationClaim> OperationClaims { get; set; }
-        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
-        public DbSet<IncomingVisitor> IncomingVisitors { get; set; }
+     
+  
 
         /// <summary>
-        /// Asmin provides normally MySQL.
+        ///  provides normally MySQL.
         /// </summary>
         /// <param name="optionsBuilder">DbContextOptionsBuilder instance.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

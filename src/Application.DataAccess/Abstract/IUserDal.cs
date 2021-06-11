@@ -12,13 +12,6 @@ namespace Application.DataAccess.Abstract
     public interface IUserDal : IRepository<User, int>
     {
         /// <summary>
-        /// Method returns claims of specified user.
-        /// </summary>
-        /// <param name="id">User id.</param>
-        /// <returns></returns>
-        List<OperationClaim> GetClaimsByUserId(int id);
-
-        /// <summary>
         /// Returns user by email and password.
         /// </summary>
         /// <param name="email">Email.</param>

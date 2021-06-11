@@ -20,8 +20,7 @@ namespace Application.DataAccess.Extensions
         public static IServiceCollection AddDataAccessModule(this IServiceCollection services)
         {
             services.AddSingleton<IUserDal, EfUserDal>();
-            services.AddSingleton<IIncomingVisitorDal, EfIncomingVisitorDal>();
-            services.AddSingleton<IOperationClaimDal, EfOperationClaimDal>();
+          
 
             return services;
         }
