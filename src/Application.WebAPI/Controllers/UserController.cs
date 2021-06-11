@@ -45,6 +45,7 @@ namespace Application.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Route("add")]
         public async Task<IActionResult> Add(InsertUserRequest insertUserRequest)
         {
             var checkUserAdded = await _userManager.AddAsync(insertUserRequest);
@@ -58,6 +59,7 @@ namespace Application.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Route("update")]
         public async Task<IActionResult> Update(UpdateUserRequest updateUserRequest)
         {
             var checkUserUpdated = await _userManager.UpdateAsync(updateUserRequest);
