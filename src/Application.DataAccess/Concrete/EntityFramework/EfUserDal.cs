@@ -19,17 +19,7 @@ namespace Application.DataAccess.Concrete.EntityFramework
             _appConfigurationContext = appConfigurationContext;
         }
 
-        public List<OperationClaim> GetClaimsByUserId(int id)
-        {
-            using (ApplicationDbContext context = new ApplicationDbContext(_appConfigurationContext.ConnectionString))
-            {
-                return context
-                    .UserOperationClaims
-                        .Where(userOperationClaim => userOperationClaim.UserId == id)
-                    .Select(userOperationClaim => userOperationClaim.OperationClaim)
-                    .ToList();
-            }
-        }
+    
 
         public User GetUser(string email, string password)
         {

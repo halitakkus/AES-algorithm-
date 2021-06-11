@@ -3,7 +3,6 @@ using app.WebMVC.Services.Rest.Base;
 using Application.Core.Configuration.Context;
 using Application.Core.Configuration.Environment;
 using Application.Core.Extensions;
-using Asmin.WebMVC.Services.Rest.IncomingVisitorService;
 using Asmin.WebMVC.Services.Rest.UserService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

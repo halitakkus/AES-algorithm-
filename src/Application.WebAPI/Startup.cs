@@ -63,9 +63,6 @@ namespace Application.WebAPI
 
             // Register AES module. 🎉
             services.AddAES();
-
-            // Register MD5 module. 🎉
-            services.AddMD5();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

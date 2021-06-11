@@ -8,11 +8,11 @@ namespace Application.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IUserManager _userManager;
 
-        public UsersController(IUserManager userManager)
+        public UserController(IUserManager userManager)
         {
             _userManager = userManager;
         }
