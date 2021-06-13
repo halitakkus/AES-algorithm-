@@ -1,0 +1,31 @@
+﻿<div class="content">
+
+    <div class="row" style="margin-left:5%">
+
+        <div style="margin-top:10%;" class="col-4">
+            <form method="post" action="/User/Add">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Adınız</label>
+                        <input type="text" class="form-control" name="FirstName" placeholder="Adınızı girin. AES ile şifrelenecektir.">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Soyadınız</label>
+                        <input type="text" name="LastName" class="form-control" placeholder="Soyadınızı girin. AES ile şifrelenecektir. ">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">E-posta adresiniz</label>
+                    <input type="text" name="Email" class="form-control" id="email" placeholder="example@example.com AES ile şifrelenecektir.">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Şifreniz</label>
+                    <input type="password" name="Password" class="form-control" placeholder="Bir şifre oluşturun. SHA256 algoritması ile Hash işlemi uygulanacaktır..">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Kaydol</button>
+            </form>
+        </div>
+    </div>
+</div>
+

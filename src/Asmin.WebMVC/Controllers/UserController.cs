@@ -22,6 +22,11 @@ namespace AES.WebMVC.Controllers
             return View(usersResult.Data);
         }
 
+        public IActionResult Add()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddAsync(InsertUserRequest insertUserRequest)
         {
