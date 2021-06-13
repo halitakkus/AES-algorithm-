@@ -33,14 +33,14 @@ namespace Asmin.WebMVC.Services.Rest.UserService
             return _httpService.GetAsync<DataResult<int>>("/users/count");
         }
 
-        public Task<IResult> AddAsync(InsertUserRequest insertUserRequest)
+        public Task<Result> AddAsync(InsertUserRequest insertUserRequest)
         {
-            return _httpService.PostAsync<IResult>("/users/add",insertUserRequest);
+            return _httpService.PostAsync<Result>("/users/add", insertUserRequest);
         }
 
-        public Task<IResult> UpdateAsync(UpdateUserRequest updateUserRequest)
+        public Task<Result> UpdateAsync(UpdateUserRequest updateUserRequest)
         {
-            return _httpService.PostAsync<IResult>("/users/update", updateUserRequest);
+            return _httpService.PostAsync<Result>("/users/update", updateUserRequest);
         }
     }
 }

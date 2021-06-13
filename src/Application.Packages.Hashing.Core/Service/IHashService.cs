@@ -5,18 +5,18 @@ using System.Text;
 namespace Application.Packages.Hashing.Core.Service
 {
     /// <summary>
-    /// Hash service provides generate and compare methods signatures.
+    /// Çekirdek bir hash servisi oluşturuldu. Diğer tüm algoritmalar buradan türeyecektir.
     /// </summary>
     public interface IHashService
     {
         /// <summary>
-        /// Generate hash.
+        /// Şifrelemek için:
         /// </summary>
         /// <param name="plainText">Plain text for hashing.</param>
         /// <returns></returns>
         string Generate(string plainText);
         /// <summary>
-        /// Compare hashed text equals plain text.
+        /// Kontrol etmek için
         /// </summary>
         /// <param name="hashedText">Hashed text.</param>
         /// <param name="plainText">Plain text.</param>

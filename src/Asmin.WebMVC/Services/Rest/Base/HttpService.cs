@@ -27,8 +27,6 @@ namespace app.WebMVC.Services.Rest.Base
         {
             var httpClient = _httpClientFactory.CreateClient();
 
-            AddAuthorizationTokenWhenExists(httpClient);
-
             httpClient.BaseAddress = new Uri(_appConfigurationContext.ApiUrl);
 
             var responseMessage = await httpClient.GetAsync(url);
@@ -42,7 +40,6 @@ namespace app.WebMVC.Services.Rest.Base
         {
             var httpClient = _httpClientFactory.CreateClient();
 
-            AddAuthorizationTokenWhenExists(httpClient);
 
             httpClient.BaseAddress = new Uri(_appConfigurationContext.ApiUrl);
 
@@ -53,16 +50,6 @@ namespace app.WebMVC.Services.Rest.Base
             var content = await responseMessage.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<T>(content);
-        }
-
-        private void AddAuthorizationTokenWhenExists(HttpClient httpClient)
-        {
-            var checkTokenExists = _httpContextAccessor.HttpContext.Request.Cookies.TryGetValue("token", out string token);
-
-            if (checkTokenExists)
-            {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            }
         }
     }
 }

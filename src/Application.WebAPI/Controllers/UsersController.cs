@@ -8,11 +8,11 @@ namespace Application.WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly IUserManager _userManager;
 
-        public UserController(IUserManager userManager)
+        public UsersController(IUserManager userManager)
         {
             _userManager = userManager;
         }
@@ -32,7 +32,7 @@ namespace Application.WebAPI.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             var userDataResult = await _userManager.GetByIdAsync(id);
 
@@ -46,7 +46,7 @@ namespace Application.WebAPI.Controllers
 
         [HttpPost]
         [Route("add")]
-        public async Task<IActionResult> Add(InsertUserRequest insertUserRequest)
+        public async Task<IActionResult> AddAsync(InsertUserRequest insertUserRequest)
         {
             var checkUserAdded = await _userManager.AddAsync(insertUserRequest);
 
@@ -60,7 +60,7 @@ namespace Application.WebAPI.Controllers
 
         [HttpPut]
         [Route("update")]
-        public async Task<IActionResult> Update(UpdateUserRequest updateUserRequest)
+        public async Task<IActionResult> UpdateAsync(UpdateUserRequest updateUserRequest)
         {
             var checkUserUpdated = await _userManager.UpdateAsync(updateUserRequest);
 
@@ -74,7 +74,7 @@ namespace Application.WebAPI.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> Remove(int id)
+        public async Task<IActionResult> RemoveAsync(int id)
         {
             var checkUserRemoved = await _userManager.RemoveAsync(id);
 

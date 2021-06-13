@@ -8,7 +8,7 @@ using Application.Core.Configuration.Context;
 namespace Application.DataAccess.Concrete.EntityFramework.Context
 {
     /// <summary>
-    /// AsminDbContext contains database entities.
+    /// Veritabanımız için entity framework ile mapping uygulanacak nesnelerimizi belirtiyoruz.
     /// </summary>
     public class ApplicationDbContext : DbContext
     {
@@ -24,7 +24,7 @@ namespace Application.DataAccess.Concrete.EntityFramework.Context
   
 
         /// <summary>
-        ///  provides normally MySQL.
+        ///  Mysql veri bağlantısını sağlıyoruz.
         /// </summary>
         /// <param name="optionsBuilder">DbContextOptionsBuilder instance.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
