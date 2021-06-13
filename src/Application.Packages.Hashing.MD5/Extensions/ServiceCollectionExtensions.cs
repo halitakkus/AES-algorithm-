@@ -13,7 +13,7 @@ namespace Application.Packages.Hashing.MD5.Extensions
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Register MD5 hash dependencies.
+        /// Md5 hash servisinin servislere eklenmesi.
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>

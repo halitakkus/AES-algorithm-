@@ -1,5 +1,4 @@
 ﻿using Application.Entities.CustomEntities.Request.User;
-using Application.Entities.CustomEntities.Response.User;
 using Asmin.WebMVC.Services.Rest.UserService;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -23,6 +22,7 @@ namespace AES.WebMVC.Controllers
             return View(usersResult.Data);
         }
 
+        [HttpPost]
         public async Task<IActionResult> AddAsync(InsertUserRequest insertUserRequest)
         {
             var usersResult = await _userApiService.AddAsync(insertUserRequest);
@@ -30,6 +30,7 @@ namespace AES.WebMVC.Controllers
             return View(usersResult);
         }
 
+        [HttpPost]
         public async Task<IActionResult> UpdateAsync(UpdateUserRequest updateUserRequest)
         {
             var usersResult = await _userApiService.UpdateAsync(updateUserRequest);

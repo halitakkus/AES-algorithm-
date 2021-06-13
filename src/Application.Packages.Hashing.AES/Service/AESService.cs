@@ -1,27 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using Application.Packages.Hashing.Core.Service;
+using Application.Packages.Encryption.Core.Service;
 
 
-namespace Application.Packages.Hashing.AES.Service
+namespace Application.Packages.Encryption.AES.Service
 {
     /// <summary>
-    /// AES hash service.
+    /// AES SERVİSİ VE İMPLEMANTASYONU.
     /// </summary>
-    public class AESHashService : IHashService
+    public class AESService : IEncryptionService
     {
         private string _aes_key = string.Empty;
 
         private string _aes_iv = string.Empty;
 
-        public AESHashService(string aes_key, string aes_iv)
+        public AESService()
         {
-            _aes_key = aes_key;
-            _aes_iv = aes_iv;
+            _aes_key = "";
+            _aes_iv = "";
         }
 
         public string Generate(string plainText)
@@ -54,7 +51,12 @@ namespace Application.Packages.Hashing.AES.Service
             return Convert.ToBase64String(encrypted);
         }
 
-        public string DecryptAES(string encryptedText)
+        /// <summary>
+        /// Deşifreleme algoritması.
+        /// </summary>
+        /// <param name="encryptedText"></param>
+        /// <returns></returns>
+        public string Decryption(string encryptedText)
         {
             string decrypted = null;
             byte[] cipher = Convert.FromBase64String(encryptedText);
@@ -83,7 +85,7 @@ namespace Application.Packages.Hashing.AES.Service
             return decrypted;
         }
 
-        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
+        public byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
         {
             if (plainText == null || plainText.Length <= 0)
                 throw new ArgumentNullException("plainText");
@@ -92,7 +94,6 @@ namespace Application.Packages.Hashing.AES.Service
             if (IV == null || IV.Length <= 0)
                 throw new ArgumentNullException("Key");
             byte[] encrypted;
-            // with the specified key and IV.
             using (RijndaelManaged rijAlg = new RijndaelManaged())
             {
                 rijAlg.Key = Key;
@@ -106,7 +107,6 @@ namespace Application.Packages.Hashing.AES.Service
                     {
                         using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
                         {
-                            //Write all data to the stream.
                             swEncrypt.Write(plainText);
                         }
                         encrypted = msEncrypt.ToArray();
@@ -116,9 +116,8 @@ namespace Application.Packages.Hashing.AES.Service
 
             return encrypted;
         }
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+        public string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
         {
-            // Check arguments.
             if (cipherText == null || cipherText.Length <= 0)
                 throw new ArgumentNullException("cipherText");
             if (Key == null || Key.Length <= 0)
@@ -134,7 +133,6 @@ namespace Application.Packages.Hashing.AES.Service
                 rijAlg.IV = IV;
                 ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
 
-                // Create the streams used for decryption.
                 using (MemoryStream msDecrypt = new MemoryStream(cipherText))
                 {
                     using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
@@ -149,6 +147,12 @@ namespace Application.Packages.Hashing.AES.Service
             return plaintext;
         }
 
+        /// <summary>
+        /// Aes algoritmasını geriye dönülmeden kullanılacaksa eğer, compare işlemi buradan uygulanabilir.
+        /// </summary>
+        /// <param name="hashedText"></param>
+        /// <param name="plainText"></param>
+        /// <returns></returns>
         public bool Compare(string hashedText, string plainText)
         {
             return Generate(plainText) == hashedText;

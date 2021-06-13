@@ -7,13 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Packages.Hashing.SHA256.Extensions
 {
-    /// <summary>
-    /// ServiceCollectionExtensions contains extended IServiceCollection's methods.
-    /// </summary>
+   
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Register SHA256 hash dependencies.
+        /// Register SHA256 hash servisinin bağımlılıklara eklenmesi.
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>

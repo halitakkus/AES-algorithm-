@@ -7,7 +7,7 @@ using AppSHA256 = System.Security.Cryptography.SHA256;
 namespace Application.Packages.Hashing.SHA256.Service
 {
     /// <summary>
-    /// SHA256 hash service.
+    /// SHA256 hash servisi.
     /// </summary>
     public class SHA256HashService : IHashService
     {
@@ -15,10 +15,8 @@ namespace Application.Packages.Hashing.SHA256.Service
         {
             using (AppSHA256 sha256Hash = AppSHA256.Create())
             {
-                // ComputeHash - returns byte array  
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(plainText));
 
-                // Convert byte array to a string   
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {
