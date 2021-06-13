@@ -1,5 +1,25 @@
-﻿<div class="content">
+﻿@model Application.Core.Utilities.Result.Result
+<div class="content">
+    @if (Model != null && Model.IsSuccess)
+    {
 
+        <div class="alert alert-success" role="alert">
+            @foreach (var message in Model.Message)
+            {
+                <small>@message</small>
+            }
+        </div>
+    }
+    @if (Model != null && !Model.IsSuccess)
+    {
+
+        <div class="alert alert-danger" role="alert">
+            @foreach (var message in Model.Message)
+            {
+                <small>@message</small>
+            }
+        </div>
+    }
     <div class="row" style="margin-left:5%">
 
         <div style="margin-top:10%;" class="col-4">
