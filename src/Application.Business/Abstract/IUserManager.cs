@@ -12,39 +12,47 @@ namespace Application.Business.Abstract
     public interface IUserManager
     {
         /// <summary>
-        /// Get user by specified id value.
+        /// Id değerine göre kullanıcı getirir.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         Task<IDataResult<User>> GetByIdAsync(int id);
         /// <summary>
-        /// Get user list.
+        /// Kullanıc listesini getirir
         /// </summary>
         /// <returns></returns>
         Task<IDataResult<List<User>>> GetListAsync();
         /// <summary>
-        /// Insert new user to database.
+        /// Kullanıcı ekler
         /// </summary>
         /// <param name="insertUserRequest"></param>
         /// <returns></returns>
         Task<IResult> AddAsync(InsertUserRequest insertUserRequest);
         /// <summary>
-        /// Update user from database.
+        /// Veritabanından kullanıcıyı günceller
         /// </summary>
         /// <param name="updateUserRequest"></param>
         /// <returns></returns>
         Task<IResult> UpdateAsync(UpdateUserRequest updateUserRequest);
         /// <summary>
-        /// Remove user from database.
+        /// Kullanıcıyı veritabanından kaldırır
         /// </summary>
         /// <param name="id">User id</param>
         /// <returns></returns>
         Task<IResult> RemoveAsync(int id);
      
         /// <summary>
-        /// It returns users count.
+        /// Kullanıcıların sayısını getirir
         /// </summary>
         /// <returns></returns>
         Task<IDataResult<int>> GetCountAsync();
+
+
+        /// <summary>
+        /// Örnek yapmak amacıyla bir girişdenemesi
+        /// </summary>
+        /// <param name="loginRequest"></param>
+        /// <returns></returns>
+        IDataResult<UserLoginResponse> Login(UserLoginRequest loginRequest);
     }
 }

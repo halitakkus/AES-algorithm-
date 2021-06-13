@@ -13,6 +13,7 @@
     <ProjectReference Include="..\Application.DataAccess\Application.DataAccess.csproj" />
     <ProjectReference Include="..\Application.Entities\Application.Entities.csproj" />
     <ProjectReference Include="..\Application.Packages.AOP\Application.Packages.AOP.csproj" />
+    <ProjectReference Include="..\Application.Packages.Encryption.Core\Application.Packages.Encryption.Core.csproj" />
     <ProjectReference Include="..\Application.Packages.Hashing.Core\Application.Packages.Hashing.Core.csproj" />
   </ItemGroup>
 

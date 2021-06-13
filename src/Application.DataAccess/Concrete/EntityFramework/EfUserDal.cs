@@ -19,8 +19,6 @@ namespace Application.DataAccess.Concrete.EntityFramework
             _appConfigurationContext = appConfigurationContext;
         }
 
-    
-
         public User GetUser(string email, string password)
         {
             using (var context = new ApplicationDbContext(_appConfigurationContext.ConnectionString))

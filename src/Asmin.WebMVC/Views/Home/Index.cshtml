@@ -1,37 +1,50 @@
 ﻿@model List<Application.Core.Entities.Concrete.User>
 
-    <div class="content">
+<div class="content">
+    <div class="card text-white bg-info  mb-3" style="margin-top:1%; margin-left:3%;margin-right:31%">
 
-        <div class="row" style="margin-left:5%">
-            <div style="margin-top:10%;" class="col-4">
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Ad</th>
-                            <th scope="col">Soyad</th>
-                            <th scope="col">E-posta</th>
-                            <th scope="col">Oluşturma</th>
-                            <th scope="col">Düzenleme</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var user in Model)
-                        {
-                            <tr>
-                                <th scope="row">@user.Id</th>
-                                <td>@user.FirstName</td>
-                                <td>@user.LastName</td>
-                                <td>@user.Email</td>
-                                <td>@user.CreatedDate</td>
-                                <td>@user.ModifiedDate</td>
-                            </tr>
-                        }
-
-                    </tbody>
-                </table>
-                
-            </div>
+        <div class="card-body">
+            <h5 class="card-title">Bilgi</h5>
+            <p class="card-text">Buradaki tüm veriler, veritabanında AES algoritması ile şifrelenmiştir. Siz ise şuanda deşifre edilmiş şekilde görüntülemektesiniz. </p>
         </div>
     </div>
+    <div class="row" style="margin-left:3%">
+        <div style="margin-top:2%;" class="col-8">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ad</th>
+                        <th scope="col">Soyad</th>
+                        <th scope="col">E-posta</th>
+                        <th scope="col">Oluşturma</th>
+                        <th scope="col">Düzenleme</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <th scope="row">@user.Id</th>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                            <td>@user.Email</td>
+                            <td>@user.CreatedDate</td>
+                            <td>@user.ModifiedDate</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+            @if (Model.Count() == 0)
+            {
+
+                <div class="alert alert-danger" role="alert">
+                    <small>Henüz kullanıcı eklenmemiş.</small>
+                </div>
+            }
+        </div>
+    </div>
+</div>
 

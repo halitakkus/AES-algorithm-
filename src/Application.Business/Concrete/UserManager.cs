@@ -11,6 +11,8 @@ using Application.Entities.CustomEntities.Request.User;
 using Application.Packages.AOP.Aspects.Exception;
 using Application.Packages.AOP.Aspects.Transaction;
 using Application.Packages.Hashing.Core.Service;
+using Application.Packages.Encryption.Core.Service;
+using Application.Entities.CustomEntities.Response.User;
 
 namespace Application.Business.Concrete
 {
@@ -18,15 +20,18 @@ namespace Application.Business.Concrete
     {
         private readonly IUserDal _userDal;
         private readonly IHashService _hashService;
+        private readonly IEncryptionService _encryptionService;
         private readonly IValidator<User> _userValidator;
 
-        public UserManager(IUserDal userDal, IValidator<User> userValidator, IHashService hashService)
+        public UserManager(IUserDal userDal, IValidator<User> userValidator, 
+            IHashService hashService, IEncryptionService encryptionService)
         {
             _userDal = userDal;
             _hashService = hashService;
             _userValidator = userValidator;
+            _encryptionService = encryptionService;
         }
-
+       
         [ExceptionAspect]
         [UnitOfWorkAspect]
         public async Task<IResult> AddAsync(InsertUserRequest insertUserRequest)
@@ -46,12 +51,40 @@ namespace Application.Business.Concrete
                 var firstErrorMessage = validationResult.Errors.Select(failure => failure.ErrorMessage).FirstOrDefault();
                 return new ErrorResult(firstErrorMessage);
             }
-
+            //Şifre geriye dönülemeyeceği için sha256 ile hash uygulanmıştır.
             user.Password = _hashService.Generate(user.Password);
 
+            //Diğer bilgiler ise geriye dönülebileceği için AES ile şifrelenmiştir.
+            user.FirstName = _encryptionService.Generate(user.FirstName);
+            user.LastName = _encryptionService.Generate(user.LastName);
+            user.Email = _encryptionService.Generate(user.Email);
+
+            //son durumda hazırlanmış nesne veritabanına kaydedilir.
             await _userDal.AddAsync(user);
+
             return new SuccessResult(ResultMessages.UserAdded);
         }
+
+        public IDataResult<UserLoginResponse> Login(UserLoginRequest loginRequest)
+        {
+            var userLoginResponse = new UserLoginResponse();
+
+            var hashedPassword = _hashService.Generate(loginRequest.Password);
+
+            var cryptedEmail = _encryptionService.Generate(loginRequest.Email);
+
+            var user = _userDal.GetUser(cryptedEmail, hashedPassword);
+
+            if (user == null)
+            {
+                return new ErrorDataResult<UserLoginResponse>(userLoginResponse, ResultMessages.UserNotFound);
+            }
+
+            userLoginResponse.User = user;
+
+            return new SuccessDataResult<UserLoginResponse>(userLoginResponse);
+        }
+
 
         public async Task<IDataResult<User>> GetByIdAsync(int id)
         {
@@ -62,6 +95,14 @@ namespace Application.Business.Concrete
         public async Task<IDataResult<List<User>>> GetListAsync()
         {
             var users = await _userDal.GetListAsync();
+
+            for (int i = 0; i < users.Count(); i++)
+            {
+                users[i].Email = _encryptionService.Decryption(users[i].Email, AesAlgorithmKey.AesKey);
+                users[i].FirstName = _encryptionService.Decryption(users[i].FirstName, AesAlgorithmKey.AesKey);
+                users[i].LastName = _encryptionService.Decryption(users[i].LastName, AesAlgorithmKey.AesKey);
+            }
+
             return new SuccessDataResult<List<User>>(users);
         }
 

@@ -86,6 +86,20 @@ namespace Application.WebAPI.Controllers
             return Ok(checkUserRemoved);
         }
 
+        [HttpPost]
+        [Route("login")]
+        public IActionResult Login(UserLoginRequest request)
+        {
+            var checkUserLoginRequest = _userManager.Login(request);
+
+            if (!checkUserLoginRequest.IsSuccess)
+            {
+                return BadRequest(checkUserLoginRequest);
+            }
+
+            return Ok(checkUserLoginRequest);
+        }
+
         [HttpGet]
         [Route("count")]
         public async Task<IActionResult> GetCount()

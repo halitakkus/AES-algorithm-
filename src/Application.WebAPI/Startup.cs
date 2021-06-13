@@ -29,13 +29,6 @@ namespace Application.WebAPI
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            // Add any Autofac modules or registrations.
-            // This is called AFTER ConfigureServices so things you
-            // register here OVERRIDE things registered in ConfigureServices.
-            //
-            // You must have the call to `UseServiceProviderFactory(new AutofacServiceProviderFactory())`
-            // when building the host or this won't be called.
-
             var executingAssembly = System.Reflection.Assembly.LoadFrom("..\\Application.Business\\bin\\Debug\\netcoreapp3.1\\Application.Business.dll");
             var interceptorModule = new AutofacInterceptorModule();
 
@@ -44,7 +37,6 @@ namespace Application.WebAPI
             builder.RegisterModule(interceptorModule);
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
@@ -55,10 +47,10 @@ namespace Application.WebAPI
 
             services.AddCors();
 
-            // Register core module. 🎉
+            
             services.AddCoreModule();
 
-            // Register business module. 🎉
+           
             services.AddBusinessModule();
 
             // SHA256. 🎉
@@ -68,10 +60,8 @@ namespace Application.WebAPI
             services.AddAES();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
