@@ -98,9 +98,9 @@ namespace Application.Business.Concrete
 
             for (int i = 0; i < users.Count(); i++)
             {
-                users[i].Email = _encryptionService.Decryption(users[i].Email, AesAlgorithmKey.AesKey);
-                users[i].FirstName = _encryptionService.Decryption(users[i].FirstName, AesAlgorithmKey.AesKey);
-                users[i].LastName = _encryptionService.Decryption(users[i].LastName, AesAlgorithmKey.AesKey);
+                users[i].Email = _encryptionService.Decryption(users[i].Email, Keys.AesKey);
+                users[i].FirstName = _encryptionService.Decryption(users[i].FirstName, Keys.AesKey);
+                users[i].LastName = _encryptionService.Decryption(users[i].LastName, Keys.AesKey);
             }
 
             return new SuccessDataResult<List<User>>(users);

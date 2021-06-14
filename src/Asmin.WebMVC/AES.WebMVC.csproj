@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
     <ProjectReference Include="..\Application.Entities\Application.Entities.csproj" />
+    <ProjectReference Include="..\Application.Packages.Encryption.VIGENERE\Application.Packages.Hashing.VIGENERE.csproj" />
   </ItemGroup>
 
   <ItemGroup>

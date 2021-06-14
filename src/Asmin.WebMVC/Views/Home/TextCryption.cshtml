@@ -1,0 +1,69 @@
+﻿@using Application.Entities.CustomEntities.Response.Home
+@model VigenereResponse
+
+
+ <div class="row">
+        <aside class="col-sm-4" style="margin-left:5%;margin-top:4%">
+            <p>Bu VIGENRE algoritmasını test etmek amacıyla hazırlanmıştır. Verilen metni VIGENERE algoritması ile şifreler.</p>
+            <div class="card">
+                <article class="card-body">
+                 
+                    <form action="/Home/TextCryption" method="post">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">KEY</span>
+                                </div>
+                                <input type="text" id="key" name="key" value="@Model?.Key" class="form-control" placeholder="Şifrelemek için key girin" aria-label="Username" aria-describedby="basic-addon1"><button type="button" id="generateKey" class="btn btn-primary">Üret</button>
+                            </div>
+                        </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Şifreleyeceğiniz metin</span>
+                                    </div>
+                                    <textarea name="text" class="form-control" aria-label="With textarea">@Model?.Text</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @if (Model != null)
+                                {
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Şifreleme sonucu</span>
+                                        </div>
+                                        <textarea disabled class="form-control" aria-label="With textarea">@Model.Result</textarea>
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group">
+                                <select name="mode" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                    <option value="true" selected>Şifrele</option>
+                                    <option value="false">Deşifrele</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary btn-block"> Uygula </button>
+                            </div> <!-- form-group// -->
+                    </form>
+                </article>
+            </div>
+        </aside>
+    </div>
+
+<script>
+    function randomstring(L) {
+        var s = '';
+        var randomchar = function () {
+            var n = Math.floor(Math.random() * 62);
+            if (n < 10) return n; //1-10
+            if (n < 36) return String.fromCharCode(n + 55); //A-Z
+            return String.fromCharCode(n + 61); //a-z
+        }
+        while (s.length < L) s += randomchar();
+        return s;
+    }
+
+    document.getElementById("generateKey").addEventListener("click", event => {
+        document.getElementById("key").value = randomstring(5, 'PICKCHARSFROMTHISSET');
+    })
+</script>

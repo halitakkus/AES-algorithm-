@@ -29,7 +29,7 @@ namespace Application.Packages.Encryption.AES.Service
 
             using (var aes = Aes.Create())
             {
-                aes.Key = Encoding.UTF8.GetBytes(AesAlgorithmKey.AesKey);
+                aes.Key = Encoding.UTF8.GetBytes(Keys.AesKey);
                 aes.IV = iv;
 
                 ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
