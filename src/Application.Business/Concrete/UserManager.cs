@@ -129,9 +129,9 @@ namespace Application.Business.Concrete
                 return new ErrorResult(ResultMessages.UserNotFound);
             }
 
-            currentUser.FirstName = updateUserRequest.FirstName;
-            currentUser.LastName = updateUserRequest.LastName;
-            currentUser.Email = updateUserRequest.Email;
+            updateUserRequest.FirstName = _encryptionService.Generate(updateUserRequest.FirstName);
+            updateUserRequest.LastName = _encryptionService.Generate(updateUserRequest.LastName);
+            updateUserRequest.Email = _encryptionService.Generate(updateUserRequest.Email);
 
             await _userDal.UpdateAsync(currentUser);
 
