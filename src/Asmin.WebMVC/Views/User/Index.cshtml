@@ -1,7 +1,13 @@
 ﻿@model List<Application.Core.Entities.Concrete.User>
   
 <div class="content">
-
+    <div class="card text-white bg-info  mb-3" style="margin-top:1%; margin-left:3%;margin-right:31%">
+       
+        <div class="card-body">
+            <h5 class="card-title">Bilgi</h5>
+            <p class="card-text">Buradaki tüm veriler, veritabanında AES algoritması ile şifrelenmiştir. Siz ise şuanda deşifre edilmiş şekilde görüntülemektesiniz. </p>
+        </div>
+    </div>
     <div class="row" style="margin-left:3%">
         <div style="margin-top:2%;" class="col-8">
             <table class="table table-dark">
@@ -30,6 +36,14 @@
 
                 </tbody>
             </table>
+
+            @if (Model.Count() == 0)
+            {
+
+                <div class="alert alert-danger" role="alert">
+                    <small>Henüz kullanıcı eklenmemiş.</small>
+                </div>
+            }
         </div>
     </div>
 </div>

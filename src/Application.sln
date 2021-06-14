@@ -39,6 +39,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applicaion.Packages.Encrypt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Packages.Encryption.Core", "Application.Packages.Encryption.Core\Application.Packages.Encryption.Core.csproj", "{0D2BBC68-5814-4DCE-846C-0D60C64AAA28}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Packages.Hashing.VIGENERE", "Application.Packages.Encryption.VIGENERE\Application.Packages.Hashing.VIGENERE.csproj", "{C28C5B7C-1BF8-4F67-93B9-04488A7D1356}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{0D2BBC68-5814-4DCE-846C-0D60C64AAA28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D2BBC68-5814-4DCE-846C-0D60C64AAA28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D2BBC68-5814-4DCE-846C-0D60C64AAA28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28C5B7C-1BF8-4F67-93B9-04488A7D1356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28C5B7C-1BF8-4F67-93B9-04488A7D1356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28C5B7C-1BF8-4F67-93B9-04488A7D1356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28C5B7C-1BF8-4F67-93B9-04488A7D1356}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,7 +117,8 @@ Global
 		{4B9D0D82-A029-4C72-895B-9F2B18368B77} = {0CF6805C-AF40-4920-9027-122602225704}
 		{762DA234-6C3B-46E0-B36E-EE5CEF149524} = {5048F0F0-A0CE-4829-A43C-1AD1B42A7D0E}
 		{5048F0F0-A0CE-4829-A43C-1AD1B42A7D0E} = {87B73EF3-3AED-4FE4-9F2A-79759AF682E4}
-		{0D2BBC68-5814-4DCE-846C-0D60C64AAA28} = {5048F0F0-A0CE-4829-A43C-1AD1B42A7D0E}
+		{0D2BBC68-5814-4DCE-846C-0D60C64AAA28} = {A1C4D972-B58E-410F-895B-E6895A5D6337}
+		{C28C5B7C-1BF8-4F67-93B9-04488A7D1356} = {5048F0F0-A0CE-4829-A43C-1AD1B42A7D0E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B8973CD-3F42-4F38-BDE7-5CC5F12C8B22}

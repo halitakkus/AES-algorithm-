@@ -27,6 +27,19 @@ namespace AES.WebMVC.Controllers
             return View();
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LoginAsync(UserLoginRequest userLoginRequest)
+        {
+            var usersResult = await   _userApiService.LoginAsync(userLoginRequest);
+
+            return View(usersResult);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddAsync(InsertUserRequest insertUserRequest)
         {
@@ -41,13 +54,6 @@ namespace AES.WebMVC.Controllers
             var usersResult = await _userApiService.UpdateAsync(updateUserRequest);
 
             return View(usersResult);
-        }
-
-        public async Task<IActionResult> LoginAsync(UserLoginRequest userLoginRequest)
-        {
-            var usersResult = await _userApiService.LoginAsync(userLoginRequest);
-
-            return View(usersResult.Data);
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
+using Application.Core.Constants.Messages;
 using Application.Packages.Encryption.Core.Service;
 
 
@@ -11,44 +14,41 @@ namespace Application.Packages.Encryption.AES.Service
     /// </summary>
     public class AESService : IEncryptionService
     {
-        private string _aes_key = string.Empty;
-
-        private string _aes_iv = string.Empty;
-
-        public AESService()
+        public static string RandomString()
         {
-            _aes_key = "";
-            _aes_iv = "";
+            var random = new Random();
+            const string chars = "b14ca5898a4e4133bbce2ea2315a1916";
+            return new string(Enumerable.Repeat(chars, chars.Length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         public string Generate(string plainText)
         {
-            byte[] encrypted;
+            byte[] iv = new byte[16];
+            byte[] array;
 
-            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
+            using (var aes = Aes.Create())
             {
-                aes.Key = Convert.FromBase64String(_aes_key);
-                aes.IV = Convert.FromBase64String(_aes_iv);
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
+                aes.Key = Encoding.UTF8.GetBytes(Keys.AesKey);
+                aes.IV = iv;
 
-                ICryptoTransform enc = aes.CreateEncryptor(aes.Key, aes.IV);
+                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
 
-                using (MemoryStream ms = new MemoryStream())
+                using (var memoryStream = new MemoryStream())
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, enc, CryptoStreamMode.Write))
+                    using (var cryptoStream = new CryptoStream((Stream)memoryStream, encryptor, CryptoStreamMode.Write))
                     {
-                        using (StreamWriter sw = new StreamWriter(cs))
+                        using (var streamWriter = new StreamWriter((Stream)cryptoStream))
                         {
-                            sw.Write(plainText);
+                            streamWriter.Write(plainText);
                         }
 
-                        encrypted = ms.ToArray();
+                        array = memoryStream.ToArray();
                     }
                 }
             }
 
-            return Convert.ToBase64String(encrypted);
+            return Convert.ToBase64String(array);
         }
 
         /// <summary>
@@ -56,33 +56,28 @@ namespace Application.Packages.Encryption.AES.Service
         /// </summary>
         /// <param name="encryptedText"></param>
         /// <returns></returns>
-        public string Decryption(string encryptedText)
+        public string Decryption(string encryptedText, string key)
         {
-            string decrypted = null;
-            byte[] cipher = Convert.FromBase64String(encryptedText);
+            byte[] iv = new byte[16];
+            byte[] buffer = Convert.FromBase64String(encryptedText);
 
-            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
+            using (Aes aes = Aes.Create())
             {
-                aes.Key = Convert.FromBase64String(_aes_key);
-                aes.IV = Convert.FromBase64String(_aes_iv);
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
+                aes.Key = Encoding.UTF8.GetBytes(key);
+                aes.IV = iv;
+                ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
 
-                ICryptoTransform dec = aes.CreateDecryptor(aes.Key, aes.IV);
-
-                using (MemoryStream ms = new MemoryStream(cipher))
+                using (var memoryStream = new MemoryStream(buffer))
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, dec, CryptoStreamMode.Read))
+                    using (var cryptoStream = new CryptoStream((Stream)memoryStream, decryptor, CryptoStreamMode.Read))
                     {
-                        using (StreamReader sr = new StreamReader(cs))
+                        using (var streamReader = new StreamReader((Stream)cryptoStream))
                         {
-                            decrypted = sr.ReadToEnd();
+                            return streamReader.ReadToEnd();
                         }
                     }
                 }
             }
-
-            return decrypted;
         }
 
         public byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
@@ -101,11 +96,11 @@ namespace Application.Packages.Encryption.AES.Service
 
                 ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
 
-                using (MemoryStream msEncrypt = new MemoryStream())
+                using (var msEncrypt = new MemoryStream())
                 {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
                     {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        using (var swEncrypt = new StreamWriter(csEncrypt))
                         {
                             swEncrypt.Write(plainText);
                         }
@@ -133,11 +128,11 @@ namespace Application.Packages.Encryption.AES.Service
                 rijAlg.IV = IV;
                 ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
 
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                using (var msDecrypt = new MemoryStream(cipherText))
                 {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                     {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        using (var srDecrypt = new StreamReader(csDecrypt))
                         {
                             plaintext = srDecrypt.ReadToEnd();
                         }

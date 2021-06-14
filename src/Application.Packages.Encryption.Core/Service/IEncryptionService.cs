@@ -12,7 +12,7 @@ namespace Application.Packages.Encryption.Core.Service
         /// </summary>
         /// <param name="plainText">Plain text for hashing.</param>
         /// <returns></returns>
-        string Decryption(string plainText);
+        string Decryption(string encryptedText, string key);
 
         /// <summary>
         /// String olarak verilen veriyi, bize şifreleyip byte dizisi olarak döner.

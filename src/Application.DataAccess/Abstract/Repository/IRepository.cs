@@ -8,54 +8,54 @@ using System.Threading.Tasks;
 namespace Application.DataAccess.Abstract.Repository
 {
     /// <summary>
-    /// Generic repository pattern interface.
+    /// Generic repository arayüzüdür..
     /// </summary>
     /// <typeparam name="TEntity">Type of entity.</typeparam>
     /// <typeparam name="TKey">Unique key of entity. It should be int, Guid etc.</typeparam>
     public interface IRepository<TEntity, in TKey> where TEntity : BaseEntity<TKey>
     {
         /// <summary>
-        /// Get TEntity by id value.
+        /// Id değerine göre getirir.
         /// </summary>
         /// <param name="id">Unique id value.</param>
         /// <returns></returns>
         TEntity GetById(TKey id);
 
         /// <summary>
-        /// Get TEntity list.
+        /// Liste getirir.
         /// </summary>
         /// <returns></returns>
         List<TEntity> GetList();
 
         /// <summary>
-        /// Insert new TEntity.
+        /// Yeni nesne ekleme
         /// </summary>
         /// <param name="entity">TEntity value.</param>
         /// <returns></returns>
         bool Add(TEntity entity);
 
         /// <summary>
-        /// Update TEntity.
+        /// nesne güncelleme
         /// </summary>
         /// <param name="entity">TEntity value.</param>
         /// <returns></returns>
         bool Update(TEntity entity);
 
         /// <summary>
-        /// Remove TEntity.
+        ///nesne kaldırma
         /// </summary>
         /// <param name="entity">TEntity value.</param>
         /// <returns></returns>
         bool Remove(TEntity entity);
 
         /// <summary>
-        /// Get all item count.
+        /// KAÇ ADET VAR ? 
         /// </summary>
         /// <returns></returns>
         int GetCount();
 
         /// <summary>
-        /// Get TEntity by id value.
+        /// Id değerine göre nesne getirme
         /// </summary>
         /// <param name="id">Unique id value.</param>
         /// <returns></returns>
@@ -68,28 +68,28 @@ namespace Application.DataAccess.Abstract.Repository
         Task<List<TEntity>> GetListAsync();
 
         /// <summary>
-        /// Insert new TEntity.
+        /// asenkron nesne ekleme 
         /// </summary>
         /// <param name="entity">TEntity value.</param>
         /// <returns></returns>
         Task<bool> AddAsync(TEntity entity);
 
         /// <summary>
-        /// Update TEntity.
+        ///  asenkron nesne güncelleme 
         /// </summary>
         /// <param name="entity">TEntity value.</param>
         /// <returns></returns>
         Task<bool> UpdateAsync(TEntity entity);
 
         /// <summary>
-        /// Remove TEntity.
+        ///  asenkron nesne kaldırma 
         /// </summary>
         /// <param name="entity">TEntity value.</param>
         /// <returns></returns>
         Task<bool> RemoveAsync(TEntity entity);
 
         /// <summary>
-        /// Get all item count.
+        ///  asenkron nesne adeti 
         /// </summary>
         /// <returns></returns>
         Task<int> GetCountAsync();

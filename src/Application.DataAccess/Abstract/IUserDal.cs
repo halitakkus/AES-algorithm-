@@ -7,12 +7,12 @@ using System.Text;
 namespace Application.DataAccess.Abstract
 {
     /// <summary>
-    /// User repository interface.
+    /// Kulllanıcı repository arayüzü.
     /// </summary>
     public interface IUserDal : IRepository<User, int>
     {
         /// <summary>
-        /// Returns user by email and password.
+        /// Kullanıcının var olup olmadığını buradan kpontrol edeceğiz.
         /// </summary>
         /// <param name="email">Email.</param>
         /// <param name="password">Hashed password.</param>

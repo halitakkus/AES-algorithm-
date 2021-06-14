@@ -3,11 +3,11 @@
     public class UserLoginRequest
     {
         /// <summary>
-        /// Email
+        /// Email alanı
         /// </summary>
         public string Email { get; set; }
         /// <summary>
-        /// Password, plain text.
+        /// şifre alanı
         /// </summary>
         public string Password { get; set; }
     }

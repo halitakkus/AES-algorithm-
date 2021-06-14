@@ -1,0 +1,55 @@
+﻿@model Application.Core.Utilities.Result.Result
+
+@if (Model != null && !Model.IsSuccess)
+{
+<div class="card text-white bg-danger  mb-3" style="margin-top:1%; margin-left:3%;margin-right:31%">
+    <div class="card-body">
+        <h5 class="card-title">Başarısız!</h5>
+        <p class="card-text">
+            @foreach (var message in Model.Message)
+            {
+<small>@message</small>}
+
+        </p>
+    </div>
+</div>}
+
+@if (Model != null && Model.IsSuccess)
+{
+<div class="card text-white bg-success  mb-3" style="margin-top:1%; margin-left:3%;margin-right:31%">
+    <div class="card-body">
+        <h5 class="card-title">Başarılı!</h5>
+        <p class="card-text">
+           Giriş İşlemi Başarılı!
+
+        </p>
+    </div>
+</div>}
+
+<div class="row">
+
+
+    <aside class="col-sm-4" style="margin-left:5%;margin-top:4%">
+        <p>Bu sha256 algoritmasını test etmek amacıyla hazırlanmıştır. Gerçek bir giriş ekranı değildir.</p>
+        <div class="card">
+            <article class="card-body">
+                <a href="/User/Add" class="float-right btn btn-outline-primary">Kayıt Ol</a>
+                <h4 class="card-title mb-4 mt-1">Giriş Yap</h4>
+                <form action="/User/Login" method="post">
+                    <div class="form-group">
+                        <label>Eposta adresi</label>
+                        <input name="Email" class="form-control" placeholder="Eposta adresinizi girin. Aes algoritması ile şifrelenip compare işlemi yapılır." type="email">
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+
+                        <label>Şifre</label>
+                        <input class="form-control" name="Password" placeholder="SHA256 ile hash uygulanır." type="password">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Giriş  </button>
+                    </div> <!-- form-group// -->
+                </form>
+            </article>
+        </div>
+    </aside>
+</div>
